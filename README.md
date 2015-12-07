@@ -135,7 +135,7 @@ import { wrapAssertion } from 'jspm-test/describe';
 
 wrapAssertion('isFour', (x) => {
   if (x !== 4) {
-    throw new Error('Given value wasn't equal to 4!');
+    throw new Error('Given value wasn\'t equal to 4');
   }
 });
 
