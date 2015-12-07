@@ -13,7 +13,7 @@ I spend a lot of time working on React and jspm projects, but the testing story 
 Install jspm-test from GitHub:
 
 ```
-jspm install jspm-test=github:jackfranklin/jspm-test@0.1.0
+jspm install jspm-test=github:jackfranklin/jspm-test@0.1.1
 ```
 
 ### Creating the test runner
@@ -152,3 +152,4 @@ describe('Is 4', (t) => {
 - Thorough documentation on other features of jspm-test, including async tests.
 - PhantomJS script / support for `jspm run` such that tests can run in a CI environment.
 - Support for jspm-hot-reloader, so tests runs are crazy quick.
+- Improve the CSS for the browser tests (any help more than welcome!)
