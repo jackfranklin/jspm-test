@@ -81,6 +81,72 @@ Refresh, and you'll see the test fail. Any errors are also logged to the console
 
 ![](readme/2+2fail.png)
 
+## Available Assertions
+
+### `t.deepEqual`
+
+Asserts that two objects are deeply equal:
+
+```js
+describe('Foo', (t) => {
+  t.deepEqual({ x: 1 }, { y: 1 }); // will fail
+});
+```
+
+### `t.ok`
+
+Asserts that the given variable is truthy:
+
+```js
+describe('Foo', (t) => {
+  t.ok(true);
+  t.ok({});
+  t.ok(false); // fail
+});
+```
+
+### `t.equal`
+
+Asserts that two variables are __strictly__ equal (using `===`).
+
+```js
+describe('Foo', (t) => {
+  t.equal(2, 2);
+  t.equal(2, '2'); // fail
+});
+```
+
+## Adding Custom Assertions
+
+Rather than create yet another assertion library, jspm-test wraps some of [Chai](http://chaijs.com/)'s assertions. By default only `t.ok`, `t.deepEqual` and `t.equal` are available but you can add others.
+
+To do this, you need to import and call `wrapAssertion`. This function takes the name of the assertion and a function that will be called with the arguments. The function is expected to raise an error if it fails, and do nothing if it passes. For example, here's how `t.equal` is implemented in jspm-test:
+
+```js
+wrapAssertion('equal', (x, y) => {
+  expect(x).to.equal(y);
+});
+```
+
+And here's how you might add your own custom assertion:
+
+```js
+import { wrapAssertion } from 'jspm-test/describe';
+
+wrapAssertion('isFour', (x) => {
+  if (x !== 4) {
+    throw new Error('Given value wasn't equal to 4!');
+  }
+});
+
+// then in a test
+
+describe('Is 4', (t) => {
+  t.isFour(5); // uh oh...
+});
+```
+
+
 ## TODO / Coming Soon
 
 - Thorough documentation on other features of jspm-test, including async tests.
