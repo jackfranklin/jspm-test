@@ -1,0 +1,22 @@
+.test-results {
+  font-family: 'Monaco', 'Courier';
+  font-size: 14px;
+}
+
+.test-results li {
+  margin-bottom: 10px;
+  list-style: none;
+}
+
+.test-result {
+  padding: 5px 0 5px 20px;
+  border-left: 1px solid #111;
+}
+
+.test-success {
+  background: #04B431;
+}
+
+.test-fail {
+  background: #DF013A;
+}
